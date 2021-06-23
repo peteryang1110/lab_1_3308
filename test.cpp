@@ -74,9 +74,11 @@ void test(vector<char> &s, vector<char> &t) {
                 }
             }
         }
-        
-        for (int i = 0; i < output.size(); i++) {
-            cout << "[" << output[i][0] << ", " << output[i][1] << "]" << endl;
+        if (output.size() != 0) {
+            for (int i = 0; i < output.size(); i++) {
+                cout << "[" << output[i][0] << ", " << output[i][1] << "]" << endl;
+            }
+        } else {
+            cout << -1 << endl;
         }
-        
     }
