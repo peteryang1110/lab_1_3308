@@ -1,3 +1,34 @@
+vector<int> test(int base, vector<int> nums) {
+    vector<bool> visited(base, false);
+    queue<int> q;
+
+    for (int i = 0; i < nums.size(); i++) {
+        nums[i] = nums[i] % base;
+        q.push(nums[i]);
+        visited[nums[i]] = true;
+    }
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
+        for (int i = 0; i < nums.size(); i++) {
+            if (visited[(current + nums[i]) % base] == false) {
+                visited[(current + nums[i]) % base] = true;
+                q.push((current + nums[i]) % base);
+            }
+        }
+
+    }
+
+    vector<int> output;
+    for (int i = 0; i < visited.size(); i++) {
+        if (visited[i] == true) output.push_back(i);
+    }
+
+    return output;
+}
+
+
+
 void test(vector<char> &s, vector<char> &t) {
         unordered_map<int, vector<int>> map;
         vector<vector<vector<int>>> substrInfo(t.size() + 1, vector<vector<int>>());
