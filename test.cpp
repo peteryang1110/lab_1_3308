@@ -10,12 +10,12 @@ void helper(int &base, vector<int> &nums, vector<bool> &visited, int current, in
 
 vector<int> test(int &base, vector<int> &nums) {
     vector<bool> visited(base, false);
-    for (int i = 0; i < nums.size(); i++) {
-        visited[nums[i] % base] = true;
-    }
     vector<int> newNums;
-    for (int i = 0; i < visited.size(); i++) {
-        if (visited[i] == true) newNums.push_back(i);
+    for (int i = 0; i < nums.size(); i++) {
+        if (visited[nums[i] % base] == false) {
+            visited[nums[i] % base] = true;
+            newNums.push_back(nums[i] % base);
+        }
     }
     for (int i = 0; i < newNums.size(); i++) {
         helper(base, newNums, visited, newNums[i], i);
