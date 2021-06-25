@@ -10,9 +10,9 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdbool.h>
 #include <stdlib.h>
 int finalCount = 0;
+int size;
 
 void helper(int base, int* nums, bool* visited, int current, int start) {
-    int size = sizeof(nums) / sizeof(int) + 1;
     for (int i = start; i < size; i++) {
         int next = (current + nums[i]) % base;
         if (visited[next] == false) {
@@ -36,13 +36,15 @@ void test(int n, int base) {
         scanf("%d", &nums[i]);
     }
     for (int i = 0; i < n; i++) {
-        if (visited[nums[i] % base] == false) {
-            visited[nums[i] % base] = true;
-            newNums[count] = nums[i] % base;
+        int num = nums[i] % base;
+        if (visited[num] == false) {
+            visited[num] = true;
+            newNums[count] = num;
             count++;
             finalCount++;
         }
     }
+    size = count;
     for (int i = 0; i < count; i++) {
         helper(base, newNums, visited, newNums[i], i);
     }
