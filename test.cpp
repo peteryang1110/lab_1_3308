@@ -26,27 +26,25 @@ void helper(int base, int* nums, bool* visited, int current, int start) {
 void test(int n, int base) {
     bool* visited = (bool*) calloc(base, sizeof(bool));
     int* nums = (int*) calloc(n, sizeof(int));
-    int* newNums = (int*) calloc(n, sizeof(int));
     int count = 0;
     
     for (int i = 0; i < base; i++) {
         visited[i] = false;
     }
     for (int i = 0; i < n; i++) {
-        scanf("%d", &nums[i]);
-    }
-    for (int i = 0; i < n; i++) {
-        int num = nums[i] % base;
+        int num;
+        scanf("%d", &num);
+        num %= base;
         if (visited[num] == false) {
             visited[num] = true;
-            newNums[count] = num;
+            nums[count] = num;
             count++;
             finalCount++;
         }
     }
     size = count;
     for (int i = 0; i < count; i++) {
-        helper(base, newNums, visited, newNums[i], i);
+        helper(base, nums, visited, nums[i], i);
     }
     printf("%d\n", finalCount);
     finalCount = 0;
@@ -56,7 +54,6 @@ void test(int n, int base) {
     printf("\n");
     free(visited);
     free(nums);
-    free(newNums);
 }
 
 int main()  {
