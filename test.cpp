@@ -47,9 +47,14 @@ void test(int n, int base) {
         helper(base, nums, visited, nums[i], i);
     }
     printf("%d\n", finalCount);
-    finalCount = 0;
     for (int i = 0; i < base; i++) {
-        if (visited[i] == true) printf("%d ", i);
+        if (visited[i] == true) {
+            finalCount--;
+            if (finalCount == 0) {
+                printf("%d", i);
+            } else {
+                printf("%d ", i);
+            }
     }
     printf("\n");
     free(visited);
