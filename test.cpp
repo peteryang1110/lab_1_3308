@@ -2,7 +2,7 @@ void helper(int &base, vector<int> &nums, vector<bool> &visited, int current, in
     for (int i = start; i < nums.size(); i++) {
         if (visited[(current + nums[i]) % base] == false) {
             visited[(current + nums[i]) % base] = true;
-            helper(base, nums, visited, (current + nums[i]) % base, start);
+            helper(base, nums, visited, (current + nums[i]) % base, i);
         }
     }
 }
