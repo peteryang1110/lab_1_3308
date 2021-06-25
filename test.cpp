@@ -52,6 +52,9 @@ void test(int n, int base) {
         if (visited[i] == true) printf("%d ", i);
     }
     printf("\n");
+    free(visited);
+    free(nums);
+    free(newNums);
 }
 
 int main()  {
